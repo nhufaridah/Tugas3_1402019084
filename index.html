@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3D Kalkulator</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+	<center><h2>3D Kalkulator</h2></center>
+    <script>
+    	var hour = new Date().getHours();
+        var nama = prompt("Masukkan Nama Anda", "");
+        if (hour > 0 && hour < 11) {	
+        document.write("<p>selamat pagi "+ nama +"</p>");
+        }
+    	else if (hour > 11 && hour < 16) {
+        document.write("<p>selamat siang "+ nama +"</p>");
+    	}
+    	else{
+    		document.write("<p>selamat malam "+ nama +"</p>");
+    	}
+    </script>
+    <p>Menghitung volume dan luas permukaan dari silinder,kerucut, dan bola.</p>
+    </body>
+    <div class="silinder">
+        <h1>Silinder</h1>
+        <label>Masukkan jari-jari silinder(dalam meter)</label>
+        <br>
+        <input type="text" name="rs" id="rs" value="" placeholder="Jari-Jari"><br><br> />
+        <label>Masukkan tinggi silinder(dalam meter)</label>
+        <br>
+        <input type="text" name="ts" id="ts" value="" placeholder="Tinggi"><br><br> />
+        <div class="hitung">
+            <span class="button" onclick="hasilSilinder()">Hitung!</span>   
+        </div>
+        <br>
+        <br>
+        Hasil Perhitungan</h2>
+            <p>Luas Permukaan: <span id="lsilinder"></span> m<sup>2</sup></p><br>
+            <p>Volume: <span id="vsilinder"></span> m<sup>3</sup></p>
+    </div>
+        <div class="kerucut">
+        <h1>Kerucut</h1>
+        <label>Masukkan jari-jari kerucut(dalam meter)</label>
+        <br>
+        <input type="text" name="rk" id="rk" value="" placeholder="Jari-Jari"><br><br> />
+        <label>Masukkan jari-jari kerucut(dalam meter)</label>
+        <br>
+        <input type="text" name="g" id="g" value="" placeholder="garis"><br><br> />
+        <label>Masukkan tinggi silinder(dalam meter)</label>
+        <br>
+        <input type="text" name="tk" id="tk" value="" placeholder="Tinggi"><br><br> />
+        <div class="hitung">
+            <span class="button" onclick="hasilKerucut()">Hitung!</span>   
+        </div>
+        <br>
+        <br>
+        Hasil Perhitungan</h2>
+            <p>Luas Permukaan: <span id="lkerucut"></span> m<sup>2</sup></p><br>
+            <p>Volume: <span id="vkerucut"></span> m<sup>3</sup></p>
+    </div>
+    <div class="bola">
+                <h1>Bola</h1>
+                <p>Masukkan jari-jari Bola (dalam meter)</p>
+                <input type="text" name="rb" id="rb" value="" placeholder="Jari-Jari"><br><br>
+                <div class="hitung">
+                    <span class="button" onclick="hasilBola()">Hitung!</span>   
+                </div>
+
+                <br><br>
+                Hasil Perhitungan</h2>
+                <p>Luas Permukaan: <span id="lbola"></span> m<sup>2</sup></p><br>
+                <p>Volume: <span id="vbola"></span> m<sup>3</sup></p>
+    </div>
+
+
+    <script type="text/javascript">
+    function hasilSilinder() {
+    var jsilinder = (document.getElementById("rs").value);
+    var tsilinder = (document.getElementById("ts").value);
+    tsilinder = tsilinder.replace(",", ".");
+    var tsilinder1 = tsilinder.replace(".", "");
+    console.log(tsilinder);
+    jsilinder = jsilinder.replace(",", ".");
+    var jsilinder1 = jsilinder.replace(".", "");
+    console.log(jsilinder);
+    var reg = new RegExp('^\\d+$');
+    if(tsilinder == "" || jsilinder == "") {
+        alert("Mohon masukkan input silinder terlebih dahulu");
+        return;
+    }
+    if(!reg.test(tsilinder1) || !reg.test(jsilinder1)) {
+        alert("Masukkan input Silider hanya boleh berupa angka");
+        document.getElementById("ts").value = "";
+        document.getElementById("rs").value = "";
+        document.getElementById("lsilinder").innerHTML = "";
+        document.getElementById("vsilinder").innerHTML = "";
+        return;
+    }
+    tsilinder = parseFloat(tsilinder);
+    jsilinder = parseFloat(jsilinder);
+    console.log(tsilinder);
+    console.log(jsilinder);
+    document.getElementById("lsilinder").innerHTML = 2 * (3.14 * jsilinder) * (jsilinder + tsilinder);
+    document.getElementById("vsilinder").innerHTML = 3.14 * (jsilinder * jsilinder) * tsilinder;
+    }
+
+    function hasilKerucut() {
+    var jkerucut = (document.getElementById("rk").value);
+    var tkerucut = (document.getElementById("tk").value);
+    var garis = (document.getElementById("g").value);
+    var tkerucut1 = tkerucut.replace(",",".");
+    tkerucut1 = tkerucut1.replace(".", "");
+    var jkerucut1 = jkerucut.replace(",",".");
+    jkerucut1 = jkerucut1.replace(".","");
+    var garis1 = garis.replace(",",".");
+    garis1 = garis1.replace(".","");
+    var reg = new RegExp('^\\d+$');
+
+    if(tkerucut == "" || jkerucut == "" || garis == "") {
+        alert("Mohon masukkan input kerucut terlebih dahulu");
+        return;
+    }
+
+    if(!reg.test(tkerucut1) || !reg.test(jkerucut1) || !reg.test(garis1)) {
+        alert("Masukkan input Kerucut hanya boleh berupa angka");
+        document.getElementById("tk").value = "";
+        document.getElementById("g").value = "";
+        document.getElementById("rk").value = "";
+        document.getElementById("lkerucut").innerHTML = "";
+        document.getElementById("vkerucut").innerHTML = "";
+        return;
+    }
+    tkerucut = parseFloat(tkerucut);
+    jkerucut = parseFloat(jkerucut);
+    garis = parseFloat(garis);
+    document.getElementById("lkerucut").innerHTML = (3.14 * jkerucut) * (jkerucut + garis);
+    document.getElementById("vkerucut").innerHTML = 3.14 * jkerucut * jkerucut * tkerucut / 3;
+    }
+
+
+    function hasilBola() {
+    var jbola = (document.getElementById("rb").value);
+    jbola = jbola.replace(",",".");
+    var jbola1 = jbola.replace(".","");
+    if(jbola == "") {
+        alert("Masukkan input jari-jari bola terlebih dahulu");
+        return;
+    }
+    var reg = new RegExp('^\\d+$');
+    if(!reg.test(jbola1)) {
+        alert("Masukkan input Bola hanya boleh berupa angka");
+        document.getElementById("rb").value = "";
+        document.getElementById("lbola").innerHTML = "";
+        document.getElementById("vbola").innerHTML = "";
+        return;
+    }
+    jbola = parseFloat(jbola);
+    document.getElementById("lbola").innerHTML = 4 * 3.14 * jbola * jbola ;
+    document.getElementById("vbola").innerHTML = (4 * 3.14 * jbola * jbola * jbola)/3;
+    }
+
+    </script>
+
+</body>
+
+</html>

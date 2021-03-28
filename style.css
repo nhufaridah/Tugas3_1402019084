@@ -1,0 +1,46 @@
+body {
+  background: #B0E0E6;
+  font-family: sans-serif;
+}
+
+h2 {
+  color: #fff;
+}
+
+.silinder {
+  padding: 1em;
+  margin: 2em auto;
+  width: 17em;
+  background: #FFC0CB;
+  border-radius: 3px;
+}
+.kerucut {
+  padding: 1em;
+  margin: 2em auto;
+  width: 17em;
+  background: #FFC0CB;
+  border-radius: 3px;
+}
+
+.bola {
+  padding: 1em;
+  margin: 2em auto;
+  width: 17em;
+  background: #FFC0CB;
+  border-radius: 3px;
+}
+label {
+  font-size: 10pt;
+  color: #555;
+}
+
+input[type="text"],
+
+textarea {
+  padding: 8px;
+  width: 95%;
+  background: #efefef;
+  border: 0;
+  font-size: 10pt;
+  margin: 6px 0px;
+}
